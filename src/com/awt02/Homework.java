@@ -5,7 +5,6 @@ import java.awt.event.*;
 
 public class Homework extends Frame implements WindowListener, MouseMotionListener, MouseListener {
 
-    private int mX, mY = 0;
     private int radius = 10; // Xpx radius of Oval
 
     private int size = 500;
@@ -24,27 +23,24 @@ public class Homework extends Frame implements WindowListener, MouseMotionListen
         setVisible(true);
     }
 
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
+    private void painDot(int x, int y){
+        Graphics g = getGraphics();
 
-        if (mX < size / 2){
-            if (mY < size / 2){
+        if (x < size / 2){
+            if (y < size / 2){
                 g.setColor(Color.RED);
             } else {
                 g.setColor(Color.ORANGE);
             }
         } else {
-            if (mY < size / 2){
+            if (y < size / 2){
                 g.setColor(Color.GREEN);
             } else {
                 g.setColor(Color.BLUE);
             }
         }
 
-        if (mX != 0 && mY != 0) {
-            g.fillOval(mX, mY, radius, radius);
-        }
+        g.fillOval(x, y, radius, radius);
     }
 
     @Override
@@ -97,13 +93,14 @@ public class Homework extends Frame implements WindowListener, MouseMotionListen
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
-        mX = (int) mouseEvent.getPoint().getX();
-        mY = (int) mouseEvent.getPoint().getY();
+        int mX = (int) mouseEvent.getPoint().getX();
+        int mY = (int) mouseEvent.getPoint().getY();
 
         System.out.println(String.format("%dx%d", mX, mY));
 
-        paint(getGraphics());
+        painDot(mX, mY);
     }
+
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
