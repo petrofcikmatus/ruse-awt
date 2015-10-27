@@ -3,7 +3,7 @@ package com.awt02;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Homework extends Frame implements ActionListener, WindowListener, MouseMotionListener, MouseListener {
+public class Homework extends Frame implements WindowListener, MouseMotionListener, MouseListener {
 
     private int mX, mY = 0;
     private int radius = 10; // Xpx radius of Oval
@@ -45,11 +45,6 @@ public class Homework extends Frame implements ActionListener, WindowListener, M
         if (mX != 0 && mY != 0) {
             g.fillOval(mX, mY, radius, radius);
         }
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-
     }
 
     @Override
