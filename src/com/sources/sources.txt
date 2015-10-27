@@ -1,0 +1,29 @@
+//        setLayout(new FlowLayout());
+//        setLayout(new GridLayout(1, 3));
+
+//        Label label = new Label();
+//        label.setText("First Homework");
+//        label.setAlignment(Label.CENTER);
+//        add(label);
+//
+//        buttonNew = new Button("New");
+//        buttonNew.addActionListener(this);
+//        add(buttonNew);
+//
+//        buttonClose = new Button("Close window bitch!");
+//        buttonClose.addActionListener(this);
+//        add(buttonClose);
+
+
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+        Object source = actionEvent.getSource();
+
+        if (source == buttonClose){
+            System.exit(0);
+        }
+
+        if (source == buttonNew){
+            new Homework();
+        }
+    }

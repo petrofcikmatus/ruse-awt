@@ -5,52 +5,72 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Homework extends Frame implements ActionListener, WindowListener {
 
-    private Button buttonClose;
-    private Button buttonNew;
+    private String fileName = "/src/com/awt01/file.txt";
+
+    private int radius = 15; // Xpx radius of Oval
+
+    private String content;
+    private String[][] points;
 
     // constructor
-    public Homework(){
+    public Homework() throws IOException {
         setTitle("Java AWT Homework 1 - Matúš Petrofčík");
 
-        setSize(300, 100);
-
-//        setLayout(new FlowLayout());
-        setLayout(new GridLayout(1, 3));
-
-//        Label label = new Label();
-//        label.setText("First Homework");
-//        label.setAlignment(Label.CENTER);
-//        add(label);
-
-        buttonNew = new Button("New");
-        buttonNew.addActionListener(this);
-        add(buttonNew);
-
-        buttonClose = new Button("Close window bitch!");
-        buttonClose.addActionListener(this);
-        add(buttonClose);
-
+        setSize(500, 500);
         addWindowListener(this);
-
         setResizable(false);
+
+        content = getFileContent(fileName);
+
+        points = getPoints(content);
 
         setVisible(true);
     }
 
+
+    private String getFileContent(String fileName) throws IOException {
+        String filePath = System.getProperty("user.dir") + fileName;
+
+        return new String(Files.readAllBytes(Paths.get(filePath)));
+    }
+
+    private String[][] getPoints(String content){
+        String[] lines = content.split("\n");
+
+        int ll = lines.length;
+
+        String[][] points = new String[ll][2];
+
+        for (int i = 0; i < ll; i++){
+            points[i] = lines[i].split(" ");
+        }
+        return points;
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        g.setColor(Color.GRAY);
+
+        for (int i = 0; i < points.length; i++){
+            int x = Integer.parseInt(points[i][0]);
+            int y = Integer.parseInt(points[i][1]);
+//          g.drawOval(x, y, radius, radius);
+            g.fillOval(x, y, radius, radius);
+
+            System.out.println(x + " " + y);
+        }
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        Object source = actionEvent.getSource();
 
-        if (source == buttonClose){
-            System.exit(0);
-        }
-
-        if (source == buttonNew){
-            new Homework();
-        }
     }
 
     @Override
