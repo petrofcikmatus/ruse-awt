@@ -5,14 +5,15 @@ import java.awt.event.*;
 
 public class Homework extends Frame implements ActionListener, WindowListener, MouseMotionListener, MouseListener {
 
-    private int radius = 5; // Xpx radius of Oval
+    private int mX, mY = 0;
+    private int radius = 10; // Xpx radius of Oval
 
-//    private Panel quadrants[] = { new Panel(), new Panel(), new Panel(), new Panel()};
+    private int size = 500;
 
     public Homework(){
         setTitle("Java AWT Homework 2 - Matúš Petrofčík");
 
-        setSize(500, 500);
+        setSize(size, size);
         setLayout(new FlowLayout());
         setResizable(false);
 
@@ -25,23 +26,30 @@ public class Homework extends Frame implements ActionListener, WindowListener, M
 
     @Override
     public void paint(Graphics g) {
-//        g.setColor(Color.GRAY);
+        super.paint(g);
 
-//        g.fillOval(x, y, radius, radius);
+        if (mX < size / 2){
+            if (mY < size / 2){
+                g.setColor(Color.RED);
+            } else {
+                g.setColor(Color.ORANGE);
+            }
+        } else {
+            if (mY < size / 2){
+                g.setColor(Color.GREEN);
+            } else {
+                g.setColor(Color.BLUE);
+            }
+        }
 
-    }
-
-    private void paintOval(Graphics g){
-
+        if (mX != 0 && mY != 0) {
+            g.fillOval(mX, mY, radius, radius);
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-//        Object source = actionEvent.getSource();
 
-//        if (source == buttonNew){
-//
-//        }
     }
 
     @Override
@@ -88,18 +96,18 @@ public class Homework extends Frame implements ActionListener, WindowListener, M
     public void mouseMoved(MouseEvent mouseEvent) {
         int mX = (int) mouseEvent.getPoint().getX();
         int mY = (int) mouseEvent.getPoint().getY();
+
         setTitle(String.format("Súradnice myši sú %d a %d", mX, mY));
     }
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
-        int mX = (int) mouseEvent.getPoint().getX();
-        int mY = (int) mouseEvent.getPoint().getY();
+        mX = (int) mouseEvent.getPoint().getX();
+        mY = (int) mouseEvent.getPoint().getY();
 
         System.out.println(String.format("%dx%d", mX, mY));
 
-//        Graphics g = new Graphics();
-//        g.fillOval(mX, mY, radius, radius);
+        paint(getGraphics());
     }
 
     @Override
