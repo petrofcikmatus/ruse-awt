@@ -1,6 +1,6 @@
 package com.main;
 
-import com.awt01.Homework;
+import com.awt02.Homework;
 
 import java.io.IOException;
 
