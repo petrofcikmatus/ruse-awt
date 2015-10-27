@@ -12,10 +12,7 @@ import java.nio.file.Paths;
 public class Homework extends Frame implements ActionListener, WindowListener {
 
     private String fileName = "/src/com/awt01/file.txt";
-
-    private int radius = 15; // Xpx radius of Oval
-
-    private String content;
+    private String fileContent;
     private String[][] points;
 
     // constructor
@@ -26,9 +23,9 @@ public class Homework extends Frame implements ActionListener, WindowListener {
         addWindowListener(this);
         setResizable(false);
 
-        content = getFileContent(fileName);
+        fileContent = getFileContent(fileName);
 
-        points = getPoints(content);
+        points = getPoints(fileContent);
 
         setVisible(true);
     }
@@ -57,9 +54,11 @@ public class Homework extends Frame implements ActionListener, WindowListener {
     public void paint(Graphics g) {
         g.setColor(Color.GRAY);
 
-        for (int i = 0; i < points.length; i++){
-            int x = Integer.parseInt(points[i][0]);
-            int y = Integer.parseInt(points[i][1]);
+        int radius = 10; // Xpx radius
+
+        for (String[] point : points) {
+            int x = Integer.parseInt(point[0]);
+            int y = Integer.parseInt(point[1]);
 //          g.drawOval(x, y, radius, radius);
             g.fillOval(x, y, radius, radius);
 
