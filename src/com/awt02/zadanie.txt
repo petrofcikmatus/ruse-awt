@@ -1,0 +1,7 @@
+You have to prepare/compile an Application in Java, having the following functionality:
+
+- Allows placing points, using the mouse (left click; the point is a circle with radius 5 pixels).
+The items/points should be able to place only if the small circle (the point) is contained entirely
+in one of four quadrants. In each quadrant the point is drawn with a different color (one color for the quadrant);
+
+- Two text fields follow the coordinates of the mouse at any time;

@@ -1,0 +1,3 @@
+In a text file are given the coordinates of points. In one row are the X- and Y- coordinates for one point.
+A separator between them is a space. You have to prepare/compile a Java Application (not Applet!!!) to read
+this file and to make graphical representation of the points.
