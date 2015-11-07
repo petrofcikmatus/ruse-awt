@@ -7,14 +7,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class Homework extends Frame implements WindowListener {
+public class Homework01 extends Frame implements WindowListener {
 
     private String fileName = "/src/com/awt01/file.txt";
     private String fileContent;
     private String[][] points;
 
     // constructor
-    public Homework() throws IOException {
+    public Homework01() throws IOException {
         setTitle("Java AWT Homework 1 - Matúš Petrofčík");
 
         setSize(500, 500);

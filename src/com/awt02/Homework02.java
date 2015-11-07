@@ -3,13 +3,13 @@ package com.awt02;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Homework extends Frame implements WindowListener, MouseMotionListener, MouseListener {
+public class Homework02 extends Frame implements WindowListener, MouseMotionListener, MouseListener {
 
     private int radius = 10; // Xpx radius of Oval
 
     private int size = 500;
 
-    public Homework(){
+    public Homework02(){
         setTitle("Java AWT Homework 2 - Matúš Petrofčík");
 
         setSize(size, size);
