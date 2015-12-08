@@ -40,7 +40,7 @@ public class Homework02 extends Frame implements WindowListener, MouseMotionList
             }
         }
 
-        g.fillOval(x, y, radius, radius);
+        g.fillOval(x - radius, y - radius, 2 * radius, 2 * radius);
     }
 
     @Override

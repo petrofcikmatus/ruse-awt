@@ -57,8 +57,8 @@ public class Homework01 extends Frame implements WindowListener {
         for (String[] point : points) {
             int x = Integer.parseInt(point[0]);
             int y = Integer.parseInt(point[1]);
-//          g.drawOval(x, y, radius, radius);
-            g.fillOval(x, y, radius, radius);
+//          g.drawOval(x - radius, y - radius, 2 * radius, 2 * radius);
+            g.fillOval(x - radius, y - radius, 2 * radius, 2 * radius);
 
             System.out.println(x + " " + y);
         }
